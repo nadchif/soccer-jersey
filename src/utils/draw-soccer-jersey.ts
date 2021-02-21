@@ -7,6 +7,7 @@ import {
   drawSingleBand,
   drawStriped,
   drawCheckered,
+  drawTwoColor,
 } from '../patterns/patterns';
 
 /**
@@ -21,11 +22,11 @@ import {
  * @param  {string} specs.sleeveColor The color (HTML Color Code) of the shirt
  *  sleeves;
  * @param  {string} specs.shirtStyle The Style of the shirt (torso region).
- * Supports "plain", "striped", "striped-thin","striped-thick","checkered",
+ * Supports "plain", "two-color", "striped", "striped-thin","striped-thick","checkered",
  *  "hoops","single-band";
  * @param {string}  specs.shirtStyleColor The color (HTML Color Code) of
  * used for the shirt style.
- * @param  {string} specs.bandDirection The style of the single band.
+ * @param  {string} specs.shirtStyleDirection The style of the single band.
  *  Required when using the "single-band" shirt style. Supports
  * "diagonal-right", "diagonal-left","horizontal", "vertical"
  * @param {boolean} encodeToDataUri By default soccer jersey will return a Data URI
@@ -41,7 +42,7 @@ export default function drawSoccerJersey({
   sleeveColor,
   shirtStyle,
   shirtStyleColor,
-  bandDirection,
+  shirtStyleDirection,
 }: {
   shirtText: string;
   textColor: string;
@@ -49,6 +50,7 @@ export default function drawSoccerJersey({
   sleeveColor: string;
   shirtStyle:
   | 'plain'
+  | 'two-color'
   | 'striped'
   | 'striped-thin'
   | 'striped-thick'
@@ -56,11 +58,11 @@ export default function drawSoccerJersey({
   | 'hoops'
   | 'single-band';
   shirtStyleColor?: string;
-  bandDirection?:
-  | 'diagonal-right'
-  | 'diagonal-left'
-  | 'horizontal'
-  | 'vertical';
+  shirtStyleDirection?:
+  ('diagonal-right'
+    | 'diagonal-left'
+    | 'horizontal'
+    | 'vertical');
 }, encodeToDataUri: boolean = true): string {
   // Colors and Color Optimizations
   const optimizedSleeveColor = lightenDarkenColor(sleeveColor, -10);
@@ -81,6 +83,14 @@ export default function drawSoccerJersey({
 
   let shirtFill: Element;
   switch (shirtStyle) {
+    case 'two-color':
+      shirtFill = drawTwoColor(
+          page,
+          optimizedShirtColor,
+          (shirtStyleColor ? shirtStyleColor : '#222'),
+        shirtStyleDirection == 'vertical' || shirtStyleDirection == 'horizontal' ? shirtStyleDirection : 'vertical',
+      );
+      break;
     case 'striped-thin':
       shirtFill = drawStriped(
           page,
@@ -108,7 +118,7 @@ export default function drawSoccerJersey({
           page,
           optimizedShirtColor,
           (shirtStyleColor ? shirtStyleColor : '#222'),
-          (bandDirection ? bandDirection : 'horizontal'),
+          (shirtStyleDirection ? shirtStyleDirection : 'horizontal'),
       );
       break;
     case 'hoops':
@@ -133,6 +143,9 @@ export default function drawSoccerJersey({
           .from(1, 1)
           .to(1, 0),
   );
+  // badge
+  page.circle(8).fill(lightenDarkenColor(optimizedShirtColor, 60)).move(64, 18);
+  page.polygon('0,3 3,0 4,3').fill(lightenDarkenColor(optimizedShirtColor, -20)).move(30, 21);
 
   // left sleeve
   page.path(pathLeftSleeve).fill(
@@ -160,13 +173,13 @@ export default function drawSoccerJersey({
   const optimizedFontSize = (20 / shirtText.length) * 3;
   page
       .text(shirtText)
-      .fill('#000')
+      .fill(lightenDarkenColor((textColor ? textColor : '#fff'), -50))
       .font({
         family: 'Courier',
-        style: 'bold',
         size: optimizedFontSize > 30 ? 30 : optimizedFontSize,
+        style: 'bold',
       })
-      .stroke({color: textColor ? textColor : '#fff', width: 0.5})
+      .stroke({color: lightenDarkenColor((textColor ? textColor : '#fff'), 10), width: 0.5})
       .center(50, 35);
 
   page.viewbox('0 0 102 100');

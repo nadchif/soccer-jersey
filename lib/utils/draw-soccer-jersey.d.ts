@@ -10,11 +10,11 @@
  * @param  {string} specs.sleeveColor The color (HTML Color Code) of the shirt
  *  sleeves;
  * @param  {string} specs.shirtStyle The Style of the shirt (torso region).
- * Supports "plain", "striped", "striped-thin","striped-thick","checkered",
+ * Supports "plain", "two-color", "striped", "striped-thin","striped-thick","checkered",
  *  "hoops","single-band";
  * @param {string}  specs.shirtStyleColor The color (HTML Color Code) of
  * used for the shirt style.
- * @param  {string} specs.bandDirection The style of the single band.
+ * @param  {string} specs.shirtStyleDirection The style of the single band.
  *  Required when using the "single-band" shirt style. Supports
  * "diagonal-right", "diagonal-left","horizontal", "vertical"
  * @param {boolean} encodeToDataUri By default soccer jersey will return a Data URI
@@ -23,12 +23,12 @@
  * @return {string} A data URL ready for direct use as src attribute
  *  on <img />
  */
-export default function drawSoccerJersey({ shirtText, textColor, shirtColor, sleeveColor, shirtStyle, shirtStyleColor, bandDirection, }: {
+export default function drawSoccerJersey({ shirtText, textColor, shirtColor, sleeveColor, shirtStyle, shirtStyleColor, shirtStyleDirection, }: {
     shirtText: string;
     textColor: string;
     shirtColor: string;
     sleeveColor: string;
-    shirtStyle: 'plain' | 'striped' | 'striped-thin' | 'striped-thick' | 'checkered' | 'hoops' | 'single-band';
+    shirtStyle: 'plain' | 'two-color' | 'striped' | 'striped-thin' | 'striped-thick' | 'checkered' | 'hoops' | 'single-band';
     shirtStyleColor?: string;
-    bandDirection?: 'diagonal-right' | 'diagonal-left' | 'horizontal' | 'vertical';
+    shirtStyleDirection?: ('diagonal-right' | 'diagonal-left' | 'horizontal' | 'vertical');
 }, encodeToDataUri?: boolean): string;

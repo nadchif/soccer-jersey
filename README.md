@@ -1,4 +1,4 @@
-#Soccer-Jersey
+# Soccer-Jersey
 
 Generate Soccer Jersey SVG images. Generates Data URIs that can be used directly as image src.
 
@@ -22,7 +22,7 @@ npm i soccer jersey
     sleeveColor: <string>, 
     shirtStyle: <"checkered" | "plain" | "single-band" | "striped" | "striped-thin" | "striped-thick" | "hoops">,
     shirtStyleColor?: <string>,
-    bandDirection?: <"horizontal" | "vertical" | "diagonal-left" | "diagonal-right">
+    shirtStyleDirection?: <"horizontal" | "vertical" | "diagonal-left" | "diagonal-right">
 }, 
 encodeToDataUri: boolean = true)
 ```
