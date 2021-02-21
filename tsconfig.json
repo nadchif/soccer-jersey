@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "sourceMap": false,
+      "checkJs": false,
+      "allowJs": true,   
+      "lib": ["es6", "es2015"], 
+      "skipLibCheck": true,
+      "target": "ES2015",
+      "module": "ES2020",
+      "strict": true,
+      "esModuleInterop": true,
+      "declaration": true,
+      "forceConsistentCasingInFileNames": true,   
+      "outDir": "./lib",
+      "moduleResolution": "node"
+    },
+    "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+    "exclude": ["node_modules", "build", "dist", "src/index.umd.ts", "src/**/*.js", "src/**/*.jsx"]
+  }
+  

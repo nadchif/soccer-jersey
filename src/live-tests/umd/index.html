@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="" />
+</head>
+
+<body>
+  <div id="previews">
+
+  </div>
+  <script src="../../../_bundles/soccer-jersey.js"></script>
+  <script>
+    const samples =
+      [
+        {
+          shirtText: "Emirates",
+          shirtColor: "#f00000",
+          sleeveColor: "#fff",
+          shirtStyle: "checkered",
+          shirtStyleColor: "#dc0001",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "CAZOO",
+          shirtColor: "#670e36",
+          sleeveColor: "#94bee5",
+          shirtStyle: "plain",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "AMERICAN",
+          shirtColor: "#026fd0",
+          sleeveColor: "#026fd0",
+          shirtStyle: "striped-thin",
+          shirtStyleColor: "#fff",
+          textColor: "#fff",
+        },
+        {
+          shirtText: " #|# ",
+          shirtColor: "#81204c",
+          sleeveColor: "#8bd3f5",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "3",
+          shirtColor: "#001489",
+          sleeveColor: "#001489",
+          shirtStyle: "plain",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "W88",
+          shirtColor: "#014a97",
+          sleeveColor: "#014a97",
+          shirtStyle: "striped",
+          shirtStyleColor: "#ff362b",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "BETVICTOR",
+          shirtColor: "#fff",
+          sleeveColor: "#333",
+          shirtStyle: "plain",
+          textColor: "#222",
+        },
+        {
+          shirtText: "CAZOO",
+          shirtColor: "#00318e",
+          sleeveColor: "#00318e",
+          shirtStyle: "plain",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "SBOTOP",
+          shirtColor: "#ffffff",
+          sleeveColor: "#ffffff",
+          shirtStyle: "plain",
+          textColor: "#1d4189",
+        },
+        {
+          shirtText: "THAILAND",
+          shirtColor: "#003090",
+          sleeveColor: "#003090",
+          shirtStyle: "plain",
+          textColor: "#fefefe",
+        },
+        {
+          shirtText: "Standard &",
+          shirtColor: "#e31b23",
+          sleeveColor: "#e31b23",
+          shirtStyle: "plain",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "ETIHAD",
+          shirtColor: "#98c5e9",
+          sleeveColor: "#98c5e9",
+          shirtStyle: "plain",
+          textColor: "#00285e",
+        },
+        {
+          shirtText: "Chevrolet",
+          shirtColor: "#c70101",
+          sleeveColor: "#c70101",
+          shirtStyle: "plain",
+          textColor: "#fed500",
+        },
+        {
+          shirtText: "FUN88",
+          shirtColor: "#fff",
+          sleeveColor: "#333",
+          shirtStyle: "striped",
+          shirtStyleColor: "#111",
+          textColor: "#00bcf6",
+        },
+        {
+          shirtText: "## USG",
+          shirtColor: "#fff",
+          sleeveColor: "#fff",
+          shirtStyle: "striped-thick",
+          shirtStyleColor: "#e30613",
+          textColor: "#111",
+        },
+        {
+          shirtText: "Sportsbet",
+          shirtColor: "#ff0028",
+          sleeveColor: "#ff0028",
+          shirtStyle: "single-band",
+          shirtStyleColor: "#fff",
+          textColor: "#111",
+          bandDirection: "diagonal-left"
+        },
+        {
+          shirtText: "AIA",
+          shirtColor: "#fff",
+          sleeveColor: "#0a225c",
+          shirtStyle: "plain",
+          textColor: "#d31145",
+        },
+        {
+          shirtText: "ideal",
+          shirtColor: "#fff",
+          sleeveColor: "#002f68",
+          shirtStyle: "striped",
+          shirtStyleColor: "#002f68",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "betWay",
+          shirtColor: "#7d2b3a",
+          sleeveColor: "#59b3e4",
+          shirtStyle: "plain",
+          textColor: "#fff",
+        },
+        {
+          shirtText: "FiT|#",
+          shirtColor: "#fdb913",
+          sleeveColor: "#333",
+          shirtStyle: "plain",
+          textColor: "#222",
+        },
+      ]
+
+
+    const previewsDiv = document.getElementById("previews");
+    samples.forEach(sample => {
+      const jerseySrc = SoccerJersey.draw(sample);
+      const img = document.createElement('img');
+      img.setAttribute("width", "250")
+      img.setAttribute("src", jerseySrc);
+      previewsDiv.append(img);
+    })
+
+  </script>
+</body>
+
+</html>

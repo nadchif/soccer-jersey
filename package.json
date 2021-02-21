@@ -1,0 +1,45 @@
+{
+  "name": "soccer-jersey",
+  "version": "1.0.0",
+  "description": "Generate soccer jerseys in SVG format",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "build:umd": "webpack --mode=production",
+    "dev:umd": "webpack serve --mode=development --watch-content-base --progress --open=true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "soccer",
+    "shirt",
+    "svg",
+    "fpl"
+  ],
+  "author": "nadchif (https://github.com/nadchif)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nadchif/soccer-jersey.git"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint": "^7.20.0",
+    "eslint-config-google": "^0.14.0",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.1.5",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "github:svgdotjs/svg.js",
+    "abab": "^2.0.5"
+  }
+}
