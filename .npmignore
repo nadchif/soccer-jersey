@@ -1,0 +1,9 @@
+/docs
+node_modules
+tsconfig.json
+.gitattributes
+.gitignore
+.prettierrc.yaml
+.eslintrc.js
+index.html
+webpack.config.js

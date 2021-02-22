@@ -1,16 +1,542 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
 
-        
-        <script src="" async defer></script>
-    </body>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Soccer Jersey JS</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        .one-pad {
+            padding: 1em;
+        }
+
+        pre {
+            font-size: 0.8em;
+            border-radius: 0.5em;
+            font-family: 'Fira Code', 'Consolas', 'Menlo', Courier, monospace;
+        }
+
+        pre.code {
+            padding: 1em;
+            background: #2D3A3A;
+            color: #ddd;
+        }
+
+        .hero-image {
+            padding: 30px;
+            display: inline-block;
+        }
+
+        .jumbotron {
+            background: #2BA84A;
+            color: #fff;
+        }
+
+        .white-bg {
+            background: #fff;
+        }
+
+        #democode {
+            font-size: 12px;
+            margin-top: 1em;
+            color: #daddd8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="" id="logo" alt="" width="30" height="24" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="#started">Get Started</a>
+                        <a class="nav-link" href="#examples">Samples</a>
+                        <a class="nav-link" href="https://github.com/nadchif/soccer-jersey.git">NPM Package</a>
+                        <a class="nav-link" href="https://github.com/nadchif/soccer-jersey.git">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col col-md-5">
+                        <h1>Soccer Jersey JS</h1>
+                        <p class="lead">
+                            Save network data, by dynamically generating soccer jersey assets
+                            suited for each player. Great for large projects where you would
+                            want to customize Soccer Jersey for each player.
+                        </p>
+                    </div>
+
+                    <div class="col col-md-7 hero-image">
+                        <div class="row">
+                            <div class="col col-md-6 text-center ">
+                                <img src="" id="demojersey" alt="" height="200" />
+                            </div>
+                            <div class="col col-md-6">
+                                <pre id="democode">
+SoccerJersey.draw({
+  shirtText: "SJ JS",
+  shirtColor: "#008800",
+  sleeveColor: "#008800",
+  textColor: "#fff",
+});
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h1 id="started">Get Started</h1>
+            <hr />
+            <h3>Methods</h3>
+            <hr />
+            <p>
+                <b>SoccerJersey</b>.<i>draw</i>({ <br />
+                &nbsp;&nbsp;shirtText: &lt;string&gt;, <br />
+                &nbsp;&nbsp;textColor: &lt;string&gt;,<br />
+                &nbsp;&nbsp;shirtColor: &lt;string&gt;,<br />
+                &nbsp;&nbsp;sleeveColor: &lt;string&gt;, <br />
+                &nbsp;&nbsp;shirtStyle: &lt;"checkered" | "plain" | "single-band" |
+                "striped" | "striped-thin" | "striped-thick" | "hoops"&gt;, <br />
+                &nbsp;&nbsp;shirtStyleColor?: &lt;string&gt;,<br />
+                &nbsp;&nbsp;shirtStyleDirection?: &lt;"horizontal" | "vertical" |
+                "diagonal-left" | "diagonal-right"&gt;<br />
+                },<br />
+                encodeToDataUri: boolean = true)
+            </p>
+
+            <hr />
+            <h3>Usage</h3>
+            <hr />
+
+            <h4>React</h4>
+            <pre class="code">
+import SoccerJersey from "soccer-jersey";
+
+const TeamPage = () =&gt; {
+
+  const jerseyImgSrc =  SoccerJersey.draw({  
+      shirtText: "ARS",
+      shirtColor: "#f00000",
+      sleeveColor: "#fff",
+      shirtStyle: "checkered",
+      shirtStyleColor: "#dc0001",
+      textColor: "#fff",
+    }); // data:image/svg+xml;base64,......
+
+...
+
+  return (
+    &lt;div&gt;
+      &lt;h1>ARS&lt;/h1&gt;
+      &lt;img src={jerseyImgSrc} /&gt;
+    &lt;/div&gt;
+  );
+}
+</pre>
+
+            <h4>Vanilla</h4>
+            <pre class="code">
+&lt;div&gt;
+  &lt;h1&gt;BHA&lt;/h1&gt;
+  &lt;img id=&quot;jerseyImg&quot; /&gt;
+&lt;div&gt;
+  
+...
+
+&lt;script &quot;dist/soccer-jersey.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  var jerseyImgSrc =  SoccerJersey.draw({  
+      shirtText: &quot;BHA&quot;,
+      shirtColor: &quot;#026fd0&quot;,
+      sleeveColor: &quot;#026fd0&quot;,
+      shirtStyle: &quot;striped-thin&quot;,
+      shirtStyleColor: &quot;#fff&quot;,
+      textColor: &quot;#fff&quot;,
+    }); // data:image/svg+xml;base64,......
+  var imgNode = document.getElementById(&quot;jerseyImg&quot;);
+  imgNode.setAttribute(&apos;src&apos;, jerseyImgSrc);
+&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+
+            <h4>Angular</h4>
+
+            Create &quot;safe&quot; pipe to allow dynamic Data URIs.
+            <pre class="code">
+// safe-html.pipe.ts
+
+import { Pipe, PipeTransform } from &apos;@angular/core&apos;;
+import { DomSanitizer, SafeHtml} from &apos;@angular/platform-browser&apos;;
+
+@Pipe({ name: &apos;safe&apos; })
+
+export class SafeHtmlPipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
+</pre>
+            Add Pipe to Declerations
+
+            <pre class="code">
+import { SafeHtmlPipe } from &apos;./safe-html.pipe&apos;;
+
+...
+
+@NgModule({
+  declarations: [
+    ...
+    SafeHtmlPipe,
+  ]
+})
+</pre>
+            Use in components
+            <pre class="code">
+@Component({
+...
+  template: `
+    &lt;div&gt;
+      &lt;h1&gt;MCI&lt;/h1&gt;
+      &lt;img [src]=&quot;jerseyImgSrc | safe&quot;&gt;
+    &lt;/div&gt;
+  `,
+...
+})
+export class AppComponent {
+  ...
+  jerseyImgSrc = SoccerJersey.draw({
+    shirtText: &apos;MCI&apos;,
+    shirtColor: &apos;#98c5e9&apos;,
+    sleeveColor: &apos;#98c5e9&apos;,
+    shirtStyle: &apos;plain&apos;,
+    textColor: &apos;#00285e&apos;,
+  });
+}
+</pre>
+
+        </section>
+
+        <section>
+            <hr />
+            <h3 id="examples">Examples</h3>
+            <hr />
+            <div class="row" id="previews"></div>
+        </section>
+    </main>
+
+    <script src="./dist/soccer-jersey.min.js"></script>
+    <script>
+        const formatAsCode = (text) => {
+            return (
+                "SoccerJersey.draw(" +
+                JSON.stringify(text) +
+                ")\r\n\r\n"
+            )
+                .replaceAll('",', '",\r\n  ')
+                .replace('{"', '{\r\n  "')
+                .replace('"}', '"\r\n}');
+        }
+
+        const logoNode = document.getElementById("logo");
+        const demoNode = document.getElementById("demojersey");
+        const demoJersey = SoccerJersey.draw({
+            shirtText: "SJ JS",
+            shirtColor: "#008800",
+            sleeveColor: "#008800",
+            textColor: "#fff",
+        });
+        [logoNode, demoNode].forEach(node => node.setAttribute(
+            "src",
+            demoJersey
+        ));
+
+        const samples = [
+            {
+                shirtText: "Emirates",
+                shirtColor: "#f00000",
+                sleeveColor: "#fff",
+                shirtStyle: "checkered",
+                shirtStyleColor: "#dc0001",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "CAZOO",
+                shirtColor: "#670e36",
+                sleeveColor: "#94bee5",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "AMERICAN",
+                shirtColor: "#398ae7",
+                sleeveColor: "#398ae7",
+                shirtStyle: "striped-thin",
+                shirtStyleColor: "#fff",
+                textColor: "#fff",
+            },
+            {
+                shirtText: " #|# ",
+                shirtColor: "#81204c",
+                sleeveColor: "#8bd3f5",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "3",
+                shirtColor: "#001489",
+                sleeveColor: "#001489",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "W88",
+                shirtColor: "#014a97",
+                sleeveColor: "#014a97",
+                shirtStyle: "striped",
+                shirtStyleColor: "#ff362b",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "BETVICTOR",
+                shirtColor: "#fff",
+                sleeveColor: "#333",
+                shirtStyle: "plain",
+                textColor: "#222",
+            },
+            {
+                shirtText: "CAZOO",
+                shirtColor: "#00318e",
+                sleeveColor: "#00318e",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "SBOTOP",
+                shirtColor: "#ffffff",
+                sleeveColor: "#ffffff",
+                shirtStyle: "plain",
+                textColor: "#1d4189",
+            },
+            {
+                shirtText: "THAILAND",
+                shirtColor: "#003090",
+                sleeveColor: "#003090",
+                shirtStyle: "plain",
+                textColor: "#fefefe",
+            },
+            {
+                shirtText: "Standard &",
+                shirtColor: "#e31b23",
+                sleeveColor: "#e31b23",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "ETIHAD",
+                shirtColor: "#98c5e9",
+                sleeveColor: "#98c5e9",
+                shirtStyle: "plain",
+                textColor: "#00285e",
+            },
+            {
+                shirtText: " CHEVROLET ",
+                shirtColor: "#c70101",
+                sleeveColor: "#c70101",
+                shirtStyle: "plain",
+                textColor: "#fed500",
+            },
+            {
+                shirtText: "FUN88",
+                shirtColor: "#fff",
+                sleeveColor: "#333",
+                shirtStyle: "striped",
+                shirtStyleColor: "#111",
+                textColor: "#00bcf6",
+            },
+            {
+                shirtText: "## USG",
+                shirtColor: "#fff",
+                sleeveColor: "#fff",
+                shirtStyle: "striped-thick",
+                shirtStyleColor: "#e30613",
+                textColor: "#111",
+            },
+            {
+                shirtText: "Sportsbet",
+                shirtColor: "#ff0028",
+                sleeveColor: "#ff0028",
+                shirtStyle: "single-band",
+                shirtStyleColor: "#fff",
+                textColor: "#111",
+                shirtStyleDirection: "diagonal-left",
+            },
+            {
+                shirtText: "AIA",
+                shirtColor: "#fff",
+                sleeveColor: "#0a225c",
+                shirtStyle: "plain",
+                textColor: "#d31145",
+            },
+            {
+                shirtText: "ideal",
+                shirtColor: "#fff",
+                sleeveColor: "#002f68",
+                shirtStyle: "striped",
+                shirtStyleColor: "#002f68",
+                textColor: "#fff",
+                textBackgroundColor: "#002f68"
+            },
+            {
+                shirtText: "betWay",
+                shirtColor: "#7d2b3a",
+                sleeveColor: "#59b3e4",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "FiT|#",
+                shirtColor: "#fdb913",
+                sleeveColor: "#333",
+                shirtStyle: "plain",
+                textColor: "#222",
+            },
+
+            {
+                shirtText: " All ",
+                shirtColor: "#00234a",
+                sleeveColor: "#00234a",
+                shirtStyle: "single-band",
+                shirtStyleColor: "#cc1339",
+                textColor: "#fff",
+                shirtStyleDirection: "vertical"
+            },
+            {
+                shirtText: "Emirates",
+                shirtColor: "#df061b",
+                sleeveColor: "#444",
+                shirtStyle: "striped",
+                shirtStyleColor: "#222",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "Rakuten",
+                shirtColor: "#081868",
+                sleeveColor: "#081868",
+                shirtStyle: "striped-thick",
+                shirtStyleColor: "#84112b",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "-T--- ",
+                shirtColor: "#d1122e",
+                sleeveColor: "#d1122e",
+                shirtStyle: "plain",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "Jeep",
+                shirtColor: "#fff",
+                sleeveColor: "#fff",
+                shirtStyle: "striped",
+                shirtStyleColor: "#222",
+                textColor: "#e1ceaf",
+            },
+            {
+                shirtText: " 1&1 ",
+                shirtColor: "#f6ea32",
+                sleeveColor: "#f6ea32",
+                shirtStyle: "dashed",
+                shirtStyleColor: "#222",
+                shirtStyleDirection: "diagonal-right",
+                textColor: "#fff",
+                textBackgroundColor: "#333"
+            },
+            {
+                shirtText: "+ Inchusa",
+                shirtColor: "#e4343b",
+                sleeveColor: "#fff",
+                shirtStyle: "two-color",
+                shirtStyleColor: "#1d2c47",
+                textColor: "#fff",
+            },
+            {
+                shirtText: " FEDCOM ",
+                shirtColor: "#fff",
+                sleeveColor: "#fff",
+                shirtStyle: "two-color",
+                shirtStyleColor: "#e53236",
+                shirtStyleDirection: "diagonal-left",
+                textColor: "#fff",
+            },
+            {
+                shirtText: "PIRELI",
+                shirtColor: "#1756ca",
+                sleeveColor: "#1756ca",
+                shirtStyle: "waves",
+                shirtStyleColor: "#222",
+                textColor: "#fff",
+            },
+        ];
+
+        const previewsDiv = document.getElementById("previews");
+        samples.forEach((sample) => {
+            const jerseySrc = SoccerJersey.draw(sample);
+            const div = document.createElement("div");
+            const codeDiv = document.createElement("div");
+            div.className = "col-12 col-md-2";
+            codeDiv.className = "col-12 col-md-4";
+            const pre = document.createElement("pre");
+            pre.className = "code";
+            pre.textContent = formatAsCode(sample);
+            const img = document.createElement("img");
+            img.className = "img-fluid";
+            img.setAttribute("src", jerseySrc);
+            div.append(img);
+            codeDiv.append(pre);
+            previewsDiv.append(div);
+            previewsDiv.append(codeDiv);
+        });
+
+        // setup timer to change demo jersey.
+        document.addEventListener('DOMContentLoaded', () => {
+            let i = 0;
+            const codeNode = document.getElementById("democode");
+            setInterval(() => {
+                demoNode.setAttribute('src', SoccerJersey.draw(samples[i]));
+                codeNode.textContent = formatAsCode(samples[i]);
+                if (i < samples.length - 1) {
+                    i++;
+                    return;
+                }
+                i = 0;
+            }, 6000)
+        });
+
+    </script>
+</body>
+
 </html>

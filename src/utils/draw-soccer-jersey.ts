@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 const {btoa} = require('abab');
-import {Element, SVG} from '@svgdotjs/svg.js';
+import {Element, Svg, SVG} from '@svgdotjs/svg.js';
 import lightenDarkenColor from './lighten-darken-color';
 import {
   drawHoops,
@@ -8,6 +8,8 @@ import {
   drawStriped,
   drawCheckered,
   drawTwoColor,
+  drawWaves,
+  drawDashes,
 } from '../patterns/patterns';
 
 /**
@@ -17,13 +19,17 @@ import {
  *  Recommended 3 letter team initials
  * @param  {string} specs.textColor The color (HTML Color Code) for the
  * text displayed on the shirt
+ * @param  {string} specs.textOutlineColor Optional. The outline color (HTML Color Code) for the
+ * text displayed on the shirt
+ * @param  {string} specs.textBackgroundColor Optional. The background color (HTML Color Code) for the
+ * text displayed on the shirt
  * @param  {string} specs.shirtColor The main color (HTML Color Code) of
  * the shirt.
  * @param  {string} specs.sleeveColor The color (HTML Color Code) of the shirt
  *  sleeves;
  * @param  {string} specs.shirtStyle The Style of the shirt (torso region).
  * Supports "plain", "two-color", "striped", "striped-thin","striped-thick","checkered",
- *  "hoops","single-band";
+ *  "hoops","single-band", "waves", "dashed";
  * @param {string}  specs.shirtStyleColor The color (HTML Color Code) of
  * used for the shirt style.
  * @param  {string} specs.shirtStyleDirection The style of the single band.
@@ -38,6 +44,8 @@ import {
 export default function drawSoccerJersey({
   shirtText,
   textColor,
+  textOutlineColor,
+  textBackgroundColor,
   shirtColor = 'plain',
   sleeveColor,
   shirtStyle,
@@ -46,6 +54,8 @@ export default function drawSoccerJersey({
 }: {
   shirtText: string;
   textColor: string;
+  textOutlineColor: string;
+  textBackgroundColor: string;
   shirtColor: string;
   sleeveColor: string;
   shirtStyle:
@@ -54,9 +64,11 @@ export default function drawSoccerJersey({
   | 'striped'
   | 'striped-thin'
   | 'striped-thick'
+  | 'waves'
   | 'checkered'
   | 'hoops'
-  | 'single-band';
+  | 'single-band'
+  | 'dashed';
   shirtStyleColor?: string;
   shirtStyleDirection?:
   ('diagonal-right'
@@ -88,7 +100,7 @@ export default function drawSoccerJersey({
           page,
           optimizedShirtColor,
           (shirtStyleColor ? shirtStyleColor : '#222'),
-        shirtStyleDirection == 'vertical' || shirtStyleDirection == 'horizontal' ? shirtStyleDirection : 'vertical',
+          (shirtStyleDirection ? shirtStyleDirection : 'vertical'),
       );
       break;
     case 'striped-thin':
@@ -110,6 +122,10 @@ export default function drawSoccerJersey({
     case 'striped':
       shirtFill = drawStriped(page, optimizedShirtColor, (shirtStyleColor ? shirtStyleColor : '#222'));
       break;
+    case 'dashed':
+      shirtFill = drawDashes(page, optimizedShirtColor, (shirtStyleColor ? shirtStyleColor : '#222'),
+          (shirtStyleDirection ? shirtStyleDirection : 'vertical'));
+      break;
     case 'checkered':
       shirtFill = drawCheckered(page, optimizedShirtColor, (shirtStyleColor ? shirtStyleColor : '#222'));
       break;
@@ -123,6 +139,14 @@ export default function drawSoccerJersey({
       break;
     case 'hoops':
       shirtFill = drawHoops(page, optimizedShirtColor, (shirtStyleColor ? shirtStyleColor : '#222'));
+      break;
+    case 'waves':
+      shirtFill = drawWaves(
+          page,
+          optimizedShirtColor,
+          (shirtStyleColor ? shirtStyleColor : '#222'),
+          (shirtStyleDirection == 'vertical' || shirtStyleDirection == 'horizontal' ? shirtStyleDirection : 'vertical'),
+      );
       break;
     default:
       shirtFill = (optimizedShirtColor as unknown as Element);
@@ -171,16 +195,22 @@ export default function drawSoccerJersey({
 
   // text
   const optimizedFontSize = (20 / shirtText.length) * 3;
-  page
-      .text(shirtText)
+  const drawText = (elem: Svg) => elem.text(shirtText)
       .fill(lightenDarkenColor((textColor ? textColor : '#fff'), -50))
       .font({
-        family: 'Courier',
+        family: 'Monospace',
         size: optimizedFontSize > 30 ? 30 : optimizedFontSize,
         style: 'bold',
       })
-      .stroke({color: lightenDarkenColor((textColor ? textColor : '#fff'), 10), width: 0.5})
+      .stroke({color: textOutlineColor? textOutlineColor: lightenDarkenColor((textColor ? textColor : '#fff'), 10), width: 0.5})
       .center(50, 35);
+  if (textBackgroundColor) {
+    // eslint-disable-next-line new-cap
+    const draftShirtTextElem = drawText(SVG());
+    const dimens = draftShirtTextElem.bbox();
+    page.rect(dimens.width + 4, dimens.height + 4).fill(lightenDarkenColor(textBackgroundColor, 10)).center(50, 35);
+  }
+  drawText(page);
 
   page.viewbox('0 0 102 100');
 

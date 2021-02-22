@@ -20,8 +20,7 @@ module.exports = {
     rules: [{test: /\.tsx?$/, loader: 'ts-loader'}],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src/'),
-    openPage: '/live-tests/umd/index.html',
+    contentBase: path.join(__dirname),
     port: 8000,
     watchContentBase: true,
     watchOptions: {
