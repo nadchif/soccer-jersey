@@ -2,7 +2,7 @@
 
 Generate Soccer Jersey SVG images. Generates Data URIs that can be used directly as image src.
 
-## Why Soccer Jersey?
+## Pros & pros
 Save network data, by dynamically generating soccer jersey assets suited for each player. Great for large projects where you would want to customize Soccer Jersey for each player.
 
 ## Install
@@ -10,6 +10,9 @@ Save network data, by dynamically generating soccer jersey assets suited for eac
 ```
 npm i soccer jersey
 ```
+
+## Live Demos
+[View live demos & examples](https://nadchif.github.io/soccer-jersey/)
 
 ## Usage
 
