@@ -525,8 +525,9 @@ export class AppComponent {
         document.addEventListener('DOMContentLoaded', () => {
             let i = 0;
             const codeNode = document.getElementById("democode");
+            const demos = [...samples].reverse();
             setInterval(() => {
-                demoNode.setAttribute('src', SoccerJersey.draw(samples[i]));
+                demoNode.setAttribute('src', SoccerJersey.draw(demos[i]));
                 codeNode.textContent = formatAsCode(samples[i]);
                 if (i < samples.length - 1) {
                     i++;

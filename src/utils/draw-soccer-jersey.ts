@@ -54,8 +54,8 @@ export default function drawSoccerJersey({
 }: {
   shirtText: string;
   textColor: string;
-  textOutlineColor: string;
-  textBackgroundColor: string;
+  textOutlineColor?: string;
+  textBackgroundColor?: string;
   shirtColor: string;
   sleeveColor: string;
   shirtStyle:
