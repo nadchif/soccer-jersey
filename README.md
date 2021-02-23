@@ -8,7 +8,7 @@ Save network data, by dynamically generating soccer jersey assets suited for eac
 ## Install
 
 ```
-npm i soccer jersey
+npm i soccer-jersey
 ```
 
 ## Live Demos
@@ -18,16 +18,18 @@ npm i soccer jersey
 
 ### API
 ```
-   SoccerJersey.draw({   
+   SoccerJersey.draw({ shirtText, textColor, textOutlineColor, textBackgroundColor, shirtColor, sleeveColor, shirtStyle, shirtStyleColor, shirtStyleDirection, }: {
     shirtText: <string>,
     textColor: <string>,
+    textOutlineColor?: <string>,
+    textBackgroundColor?: <string>,
     shirtColor: <string>,
-    sleeveColor: <string>, 
-    shirtStyle: <"checkered" | "plain" | "single-band" | "striped" | "striped-thin" | "striped-thick" | "hoops">,
+    sleeveColor: <string>,
+    shirtStyle: <'plain' | 'two-color' | 'striped' | 'striped-thin' | 'striped-thick' | 'waves' | 'checkered' | 'hoops' | 'single-band' | 'dashed'>,
     shirtStyleColor?: <string>,
-    shirtStyleDirection?: <"horizontal" | "vertical" | "diagonal-left" | "diagonal-right">
+    shirtStyleDirection?: <'diagonal-right' | 'diagonal-left' | 'horizontal' | 'vertical'>,
 }, 
-encodeToDataUri: boolean = true)
+encodeToDataUri?: boolean): string
 ```
 
 
