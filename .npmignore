@@ -7,4 +7,4 @@ tsconfig.json
 .eslintrc.js
 index.html
 webpack.config.js
-.map
+*.map
