@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "build:umd": "webpack --mode=production",
     "dev:umd": "webpack serve --mode=development --watch-content-base --progress --open=true",
-    "deploy": "npm version patch && npm run build:umd && npm run build",
+    "build:deploy": "npm version patch && npm run build:umd && npm run build",
     "doc": "npx typedoc src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
