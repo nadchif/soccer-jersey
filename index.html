@@ -546,7 +546,7 @@ export class AppComponent {
         var demos = [].concat(samples).reverse();
         setInterval(function () {
           demoNode.setAttribute("src", SoccerJersey.draw(demos[i]));
-          codeNode.textContent = formatAsCode(samples[i]);
+          codeNode.textContent = formatAsCode(demos[i]);
 
           if (i < samples.length - 1) {
             i++;
