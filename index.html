@@ -280,7 +280,7 @@ export class AppComponent {
 
       var formatAsCode = function formatAsCode(text) {
         return ("SoccerJersey.draw(" + JSON.stringify(text) + ")\r\n\r\n")
-          .replaceAll('",', '",\r\n  ')
+          .replace(/\",/g, '",\r\n  ')
           .replace('{"', '{\r\n  "')
           .replace('"}', '"\r\n}');
       };
