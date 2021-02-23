@@ -5,3 +5,4 @@ node_modules
 *.bat
 thumbs.db
 /docs
+dev-test.html
