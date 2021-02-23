@@ -18,7 +18,7 @@ npm i soccer-jersey
 
 ### API
 ```
-   SoccerJersey.draw({ shirtText, textColor, textOutlineColor, textBackgroundColor, shirtColor, sleeveColor, shirtStyle, shirtStyleColor, shirtStyleDirection, }: {
+   SoccerJersey.draw({
     shirtText: <string>,
     textColor: <string>,
     textOutlineColor?: <string>,
