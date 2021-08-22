@@ -4,11 +4,11 @@
   "description": "Generate soccer jerseys in SVG format",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc",
     "build:umd": "webpack --mode=production",
     "dev:umd": "webpack serve --mode=development --watch-content-base --progress --open=true",
     "build:deploy": "npm version patch && npm run build:umd && npm run build",
-    "doc": "npx typedoc src/index.ts",
+    "doc": "typedoc src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -37,6 +37,7 @@
     "eslint": "^7.20.0",
     "eslint-config-google": "^0.14.0",
     "ts-loader": "^8.0.17",
+    "tsc": "^2.0.3",
     "typedoc": "^0.20.27",
     "typescript": "^4.1.5",
     "webpack": "^5.23.0",
