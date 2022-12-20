@@ -35,6 +35,8 @@ import {
  * @param  {string} specs.shirtStyleDirection The style of the single band.
  *  Required when using the "single-band" shirt style. Supports
  * "diagonal-right", "diagonal-left","horizontal", "vertical"
+ * @param {boolean} specs.isBack Set to true to draw the shirt from the
+ *  back (different neck shape, no badges). Defaults to false.
  * @param {boolean} encodeToDataUri By default soccer jersey will return a Data URI
  * string like data:image/svg+xml;base64,...... You can set false, to return the actual
  * SVG contents as a string.
@@ -51,6 +53,7 @@ export default function drawSoccerJersey({
   shirtStyle,
   shirtStyleColor,
   shirtStyleDirection,
+  isBack = false,
 }: {
   shirtText: string;
   textColor: string;
@@ -75,6 +78,7 @@ export default function drawSoccerJersey({
     | 'diagonal-left'
     | 'horizontal'
     | 'vertical');
+  isBack?: boolean;
 }, encodeToDataUri: boolean = true): string {
   // Colors and Color Optimizations
   const optimizedSleeveColor = lightenDarkenColor(sleeveColor, -10);
@@ -89,6 +93,8 @@ export default function drawSoccerJersey({
     'm83 8c-6.4-2.3-13-5.3-19-8 1.4 5.4-5.4 8.2-10 8.7-5.8.68-13-.075-17-5-1.2-2.1.62-5.1-2.8-2.6-5.6 2.6-11 5.5-17 7.9 5.6 21 3.3 17 6.2 40-.14 15 .16 30-.79 45 1.6 4.7 9.5 4 14 5.2 13 1.8 26 1.2 39-2.3 5.7-1.5 1.5-8.1 2.5-12-.32-15-.32-29-.32-44 5.5-37 1.6-12 4.9-33z';
   const pathNeck =
     'm63 .064c-3.8.47-7.5 1.9-11 1.9-5 .31-11-.47-16-1.9-1.7.6-.78 2.8-1.8 4.1-3 5.1-6 10-9 15h50c-3.8-6.4-7.6-13-11-19z';
+  const pathNeckBack =
+    'm63 .064C 60.12,5.3 53.35,6.6 49.86 6.6 44.86 7 40.4 4 36 .064c-1.7.6-.78 2.8-1.8 4.1-3 5.1-6 10-9 15h50c-3.8-6.4-7.6-13-11-19z';
 
   // eslint-disable-next-line new-cap
   const page = SVG();
@@ -153,7 +159,7 @@ export default function drawSoccerJersey({
   }
 
   // neck
-  page.path(pathNeck).fill(lightenDarkenColor(shirtColor, -50));
+  page.path(isBack ? pathNeckBack : pathNeck).fill(lightenDarkenColor(shirtColor, -50));
 
   // shirt
   page.path(pathMainBody).fill(shirtFill);
@@ -168,8 +174,10 @@ export default function drawSoccerJersey({
           .to(1, 0),
   );
   // badge
-  page.circle(8).fill(lightenDarkenColor(optimizedShirtColor, 60)).move(64, 18);
-  page.polygon('0,3 3,0 4,3').fill(lightenDarkenColor(optimizedShirtColor, -20)).move(30, 21);
+  if (!isBack) {
+    page.circle(8).fill(lightenDarkenColor(optimizedShirtColor, 60)).move(64, 18);
+    page.polygon('0,3 3,0 4,3').fill(lightenDarkenColor(optimizedShirtColor, -20)).move(30, 21);
+  }
 
   // left sleeve
   page.path(pathLeftSleeve).fill(
