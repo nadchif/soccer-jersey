@@ -29,6 +29,7 @@ npm i soccer-jersey
                 | 'checkered' | 'hoops' | 'single-band' | 'dashed'>,
     shirtStyleColor?: <string>,
     shirtStyleDirection?: <'diagonal-right' | 'diagonal-left' | 'horizontal' | 'vertical'>,
+    isBack?: <boolean>,
 }, 
 encodeToDataUri?: boolean): string
 ```
