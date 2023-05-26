@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type {Meta, StoryObj} from '@storybook/react';
 
-import { ReactTeamPage } from './ReactTeamPage';
+import {ReactTeamPage} from './ReactTeamPage';
 
 const meta: Meta<typeof ReactTeamPage> = {
   title: 'React Examples',
