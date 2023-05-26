@@ -7,7 +7,7 @@
     "build": "tsc",
     "build:umd": "webpack --mode=production",
     "dev:umd": "webpack serve --mode=development --watch-content-base --progress --open=true",
-    "build:deploy": "npm run build-storybook && npm version patch && npm run build:umd && npm run build",
+    "build:deploy": "npm version patch && npm run build-storybook && npm run build:umd && npm run build",
     "doc": "typedoc src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
