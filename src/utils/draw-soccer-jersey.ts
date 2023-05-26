@@ -11,6 +11,7 @@ import {
   drawWaves,
   drawDashes,
 } from '../patterns/patterns';
+import {DrawSoccerJerseyProps} from '../types';
 
 /**
  *
@@ -54,32 +55,7 @@ export default function drawSoccerJersey({
   shirtStyleColor,
   shirtStyleDirection,
   isBack = false,
-}: {
-  shirtText: string;
-  textColor: string;
-  textOutlineColor?: string;
-  textBackgroundColor?: string;
-  shirtColor: string;
-  sleeveColor: string;
-  shirtStyle:
-  | 'plain'
-  | 'two-color'
-  | 'striped'
-  | 'striped-thin'
-  | 'striped-thick'
-  | 'waves'
-  | 'checkered'
-  | 'hoops'
-  | 'single-band'
-  | 'dashed';
-  shirtStyleColor?: string;
-  shirtStyleDirection?:
-  ('diagonal-right'
-    | 'diagonal-left'
-    | 'horizontal'
-    | 'vertical');
-  isBack?: boolean;
-}, encodeToDataUri: boolean = true): string {
+}: DrawSoccerJerseyProps, encodeToDataUri: boolean = true): string {
   // Colors and Color Optimizations
   const optimizedSleeveColor = lightenDarkenColor(sleeveColor, -10);
   const optimizedShirtColor = lightenDarkenColor(shirtColor, -10);

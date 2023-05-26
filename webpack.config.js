@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -15,7 +17,20 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js'],
   },
   devtool: 'source-map',
-  plugins: [],
+  optimization: {
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+    })],
+  },
+  plugins: [
+    // eslint-disable-next-line new-cap
+    new webpack.BannerPlugin({
+      banner: `
+Source: https://nadchif.github.io/soccer-jersey/
+The version of the package is: ${require('./package.json').version}
+      `,
+    }),
+  ],
   module: {
     rules: [{test: /\.tsx?$/, loader: 'ts-loader'}],
   },

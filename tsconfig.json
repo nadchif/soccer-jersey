@@ -12,7 +12,8 @@
       "declaration": true,
       "forceConsistentCasingInFileNames": true,   
       "outDir": "./lib",
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "jsx": "react-jsx"
     },
     "include": ["./src/**/*.ts", "./src/**/*.tsx"],
     "exclude": ["node_modules", "build", "dist", "src/index.umd.ts", "src/**/*.js", "src/**/*.jsx"]
