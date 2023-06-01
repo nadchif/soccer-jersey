@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const {btoa} = require('abab');
+import {btoa} from 'abab';
 import {Element, Svg, SVG} from '@svgdotjs/svg.js';
 import lightenDarkenColor from './lighten-darken-color';
 import {
