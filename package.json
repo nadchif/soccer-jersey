@@ -4,7 +4,7 @@
   "description": "Generate soccer jerseys in SVG format",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "./node_modules/typescript/bin/tsc  -p .",
     "build:umd": "webpack --mode=production",
     "dev:umd": "webpack serve --mode=development --watch-content-base --progress --open=true",
     "build:deploy": "npm version patch && npm run build-storybook && npm run build:umd && npm run build",
