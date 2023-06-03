@@ -1,6 +1,6 @@
 {
   "name": "soccer-jersey",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Generate soccer jerseys in SVG format",
   "main": "lib/index.js",
   "scripts": {
